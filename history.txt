@@ -1,0 +1,38 @@
+  525  curl https://sh.rustup.rs -sSf | sh
+  529  rustup
+  530  vim .profile 
+  531  source .profile 
+  532  rustup install stable
+  533  rustup default stable
+  534  rustup target add wasm32-unknown-emscripten
+  536  cd Workspace/
+  538  mkdir rust
+  539  cd rust/
+  543  brew install wget
+  544  wget https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+  546  tar -xvzf emsdk-portable.tar.gz 
+  548  rm emsdk-portable.tar.gz
+  551  cd emsdk-portable/
+  552  source ./emsdk_env.sh
+  558  emcc -v
+  563  brew install cmake
+  564  emsdk update
+  565  emsdk install sdk-incoming-64bit
+  566  emsdk activate sdk-incoming-64bit
+  570  source $HOME/.cargo/env
+  567  emcc -v
+  572  rustup component add rust-src
+  573  rustup component add rust-docs
+  574  rustup update
+  575  rustup toolchain install nightly
+  588  rustup run nightly cargo install clippy
+  577  cd ../
+  580  cargo init --bin mytest && cd mytest
+  589  cargo install racer
+  587  vim src/main.rs 
+  594  rustc --target=wasm32-unknown-emscripten src/main.rs -o hello.html
+  596  cd ..
+  598  source ./emsdk-portable/emsdk_env.sh
+  599  emcc -v
+  600  cd mytest
+  601  rustc --target=wasm32-unknown-emscripten src/hello.rs -o weba/hello.html
