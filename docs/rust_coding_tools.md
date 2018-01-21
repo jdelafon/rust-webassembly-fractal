@@ -1,6 +1,8 @@
 
 ### Rust coding tools:
 
+##### Formatting
+
 clippy: linting
 
     rustup run nightly cargo install clippy
