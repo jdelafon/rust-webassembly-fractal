@@ -2,18 +2,18 @@
 // Functions that you wish to access from Javascript
 // must be marked as no_mangle
 #[no_mangle]
-pub fn belongs_to_mandelbrot_set(x: u32, y: u32, max_iterations: u32) -> f32 {
-    println!("!!!");
+pub fn belongs_to_mandelbrot_set(x: f32, y: f32, max_iterations: u32) -> f32 {
+    // println!("{}", format!("!!! {} {} {}", x, y, max_iterations));
 
-    let mut real_component_of_result: f32 = x as f32;
-    let mut imaginary_component_of_result: f32 = y as f32;
+    let mut real_component_of_result: f32 = x;
+    let mut imaginary_component_of_result: f32 = y;
 
     for i in 0..max_iterations {
         let temp_real_component: f32 = real_component_of_result * real_component_of_result
             - imaginary_component_of_result * imaginary_component_of_result
-            + x as f32;
+            + x;
         let temp_imaginary_component: f32 = 2.0 * real_component_of_result * imaginary_component_of_result
-            + y as f32;
+            + y;
         real_component_of_result = temp_real_component;
         imaginary_component_of_result = temp_imaginary_component;
 
