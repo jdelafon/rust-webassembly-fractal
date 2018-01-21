@@ -40,8 +40,15 @@ Start the project
 ### Compile to Web Assembly
 
     rustc --target=wasm32-unknown-emscripten src/hello.rs -o weba/hello.html
+    rustc --target=wasm32-unknown-emscripten src/mandelbrot.rs -o weba/mandelbrot.html
 
 The build goes to /weba/.
+
+##### Make the wasm readable
+
+Install "wabt" (e.g. with Homebrew).
+
+    wasm2wast mandelbrot.wasm -o mandelbrot.wast
 
 ### Run in a web page
 

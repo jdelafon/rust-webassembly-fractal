@@ -1,6 +1,9 @@
 
-fn belongs_to_mandelbrot_set(x: u32, y: u32, max_iterations: u32) -> f32 {
-    println!("My first Rust application");
+// Functions that you wish to access from Javascript
+// must be marked as no_mangle
+#[no_mangle]
+pub fn belongs_to_mandelbrot_set(x: u32, y: u32, max_iterations: u32) -> f32 {
+    println!("!!!");
 
     let mut real_component_of_result: f32 = x as f32;
     let mut imaginary_component_of_result: f32 = y as f32;
@@ -21,3 +24,8 @@ fn belongs_to_mandelbrot_set(x: u32, y: u32, max_iterations: u32) -> f32 {
     }
     return 0.0;   // Return zero if in set
 }
+
+fn main() {
+    println!("My fractal application in Rust");
+}
+
