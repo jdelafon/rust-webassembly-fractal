@@ -2,8 +2,9 @@
 
 Refs:
 
-- [hackernoon](https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde)
-- [asquera](http://asquera.de/blog/2017-03-03/setting-up-a-rust-devenv/)
+- [hackernoon - Compiling Rust to WebAssembly guide](https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde)
+- [asquera - Setting up a Rust dev env](http://asquera.de/blog/2017-03-03/setting-up-a-rust-devenv/)
+- [asquera - The path to Rust on the web](http://asquera.de/blog/2017-04-10/the-path-to-rust-on-the-web/)
 
 ### Install
 
@@ -24,6 +25,8 @@ WebAssembly:
 
 ### Startup
 
+(...missing: how to get emsdk - the emscripten software dev kit)
+
     source ../emsdk-portable/emsdk_env.sh
 
 Check:
@@ -35,14 +38,17 @@ Check:
 Start the project
 
     cargo init --bin mytest && cd mytest
-    mv src/main.rs src/hello.rs
+    mv src/main.rs src/mandelbrot.rs
 
 ### Compile to Web Assembly
 
-    rustc --target=wasm32-unknown-emscripten src/hello.rs -o weba/hello.html
     rustc --target=wasm32-unknown-emscripten src/mandelbrot.rs -o weba/mandelbrot.html
 
-The build goes to /weba/.
+The build goes to /weba/. It produces a .wasm, a .js and a .html file.
+
+* The .wasm is the WebAssembly binary file.
+* The .html is ready to load in a browser with a built-in console.
+* The .js is the file to load in a <script> tag in order to use wasm functions in JS.
 
 ##### Make the wasm readable
 
@@ -55,19 +61,16 @@ Install "wabt" (e.g. with Homebrew).
 - Go to /weba/
 - Run a web server at localhost:8000:
 
+      ```
       python -m SimpleHTTPServer
-      
-  or 
-  
-      # npm install -g http-server
-      http-server
+      ```
       
 - Make sure web assembly is enabled in the browser
     - Chrome: `chrome://flags` -> "WebAssembly" stuff  
     - Firefox: `about:config` -> "wasm" stuff 
-- Go to 'localhost:8000/hello.html' in a browser. 
+- Go to 'localhost:8000/index.html' in a browser. 
 
-### Other tools:
+### Rust coding tools:
 
 clippy: linting
 
@@ -94,7 +97,7 @@ Test that it works:
     
 ### Use a nightly build
 
-    (May be useful sometimes, e.g. installing clippy requires that)
+(May be useful sometimes, e.g. installing clippy requires that)
 
     # Install the nightly alongside the stable version
     rustup toolchain install nightly
