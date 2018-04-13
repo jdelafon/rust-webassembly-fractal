@@ -6,15 +6,15 @@
   533  rustup default stable
   534  rustup target add wasm32-unknown-emscripten
   536  cd Workspace/
-  538  mkdir rust
-  539  cd rust/
+  538  mkdir wasm
+  539  cd wasm/
   543  brew install wget
   544  wget https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
   546  tar -xvzf emsdk-portable.tar.gz 
   548  rm emsdk-portable.tar.gz
   551  cd emsdk-portable/
   552  source ./emsdk_env.sh
-  558  emcc -v
+  558  emcc -v   # fail
   563  brew install cmake
   564  emsdk update
   565  emsdk install sdk-incoming-64bit

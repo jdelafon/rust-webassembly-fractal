@@ -11,6 +11,7 @@ See /docs/ to start the project.
 ### Startup
 
     source ../emsdk-portable/emsdk_env.sh
+    source $HOME/.cargo/env
 
 ### Compile Rust files to Web Assembly
 
