@@ -45,7 +45,7 @@
                 drawPoint(ctx, x, y, belongsToSet);
             }
         }
-        console.log("Wasm time:", timeWeba, "Iterations:", iterations);
+        console.log("Wasm time:", timeWeba);
     }
 
     /**
@@ -80,7 +80,7 @@
                 drawPoint(ctx, x, y, belongsToSet);
             }
         }
-        console.log("JS time:", timeJS, "Iterations:", iterations);
+        console.log("JS time:", timeJS);
     }
 
     /** JS version */
